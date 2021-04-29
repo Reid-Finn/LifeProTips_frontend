@@ -30,7 +30,7 @@ export const getLifeProTips = () => {
   //increase likes from a specific poem via fetch and to update state
   export const addLike = (id, likes) => {
     return dispatch => {
-      fetch(`http://localhost:3001/poems/${id}`, {
+      fetch(`http://localhost:3001/lifeprotips/${id}`, {
         method: "PATCH",
         headers: {
           "Accept": "application/json",
