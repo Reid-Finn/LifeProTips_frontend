@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { connect } from 'react-redux';
+import Header from './Components/Header';
+import Footer from './Components/Footer'
+import NavBar from './Components/NavBar';
+import About from './Components/About';
+import Form from './Components/Form';
+import LifeProTips from './Components/LifeProTips';
+import ErrorPage from './Components/ErrorPage'
+import { getLifeProTips } from './actions/index'
+import Home from './Components/Home';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+class App extends Component {
+
+
+  componentDidMount(){
+    this.props.getLifeProTips();
+  }
+
+  render() {
+
+    if (this.props.loading) {
+      return (
+        <h2>Loading data...</h2>
+      )
+    }
+
+
+    return (
+      <Router>
+        <Header />
+        <NavBar />
+        <div className="app">
+        <Switch>
+          <Route exact path="/"><Home /></Route>
+          <Route exact path="/about" component={ About } />
+          <Route exact path="/lifeprotips" component={ LifeProTips } />
+          <Route exact path="/lifeprotips/new" component={ Form } />
+          <Route component={ ErrorPage } />
+        </Switch> 
+        <Footer /> 
+        </div>
+      </Router>
+
+    )
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    loading: state.loading
+  }
+}
+
+export default connect(mapStateToProps, { getLifeProTips })(App);

@@ -2,7 +2,7 @@
 export const getLifeProTips = () => {
     return dispatch => {
       dispatch({type: "LOADING"})
-      fetch('http://localhost:3001/lifeprotip')
+      fetch('http://localhost:3001/lifeprotips')
       .then(resp => resp.json())
       .then(lifeprotips => {dispatch({ type: "SET_LIFEPROTIPS", lifeprotips })})
     }
@@ -11,7 +11,7 @@ export const getLifeProTips = () => {
   // add a lifeprotip to database and use history from react-router-dom to redirect to index page that displays all the lifeprotips.
   export const addLifeProTip = (lifeprotip, history) => {
     return dispatch => {
-      fetch('http://localhost:3001/lifeprotip', {
+      fetch('http://localhost:3001/lifeprotips', {
         method: "POST",
         headers: {
           "Accept": "application/json",
