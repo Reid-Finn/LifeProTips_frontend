@@ -1,9 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-export default function Footer() {
-    return (
-        <div>
-            
-        </div>
-    )
+
+
+function Footer() {
+
+  return (
+    <div>
+        <h2>Copyright 2021 Reid Finn</h2>
+        <h2>LifeProTip Final Project</h2>
+    </div>
+  );
 }
+
+export default Footer

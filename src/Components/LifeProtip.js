@@ -5,9 +5,6 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 
 class Lifeprotip extends Component {
   
-    // add a like to total likes
-    // dispatch action fetch request post to `http://localhost:3000/lifeprotip/${id}`
-    // update state of individual lifeprotip when clicking
   
 handleLikes = () => {
   this.props.addLike(this.props.id, this.props.likes)
